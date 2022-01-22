@@ -12,7 +12,7 @@ const JWT_SECRET="laundry-service"
 const createUser =async(req,res)=>{
     // check user already there or not
     try{
-        const user= await User.findOne({email:req.body.email})
+        const user= await User.findOne({email:req.body.email })
 
         if (!user){
         
@@ -28,7 +28,8 @@ const createUser =async(req,res)=>{
             password:securePassword,
             pincode:req.body.pincode,
             district:req.body.district,
-            address:req.body.address
+            address:req.body.address,
+            state:req.body.state
         }
 
         const newuser =await User.create(newUseInfo)
