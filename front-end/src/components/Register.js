@@ -1,5 +1,7 @@
 import React from 'react';
 import  { useState } from 'react';
+import { NavLink } from 'react-router-dom'
+
 
 export default function Register() {
 
@@ -63,7 +65,8 @@ async function handlesubmit(e){
       <p className='para-login'>Doorstep Wash & Dryclean service</p>
       <div className='btn-sec'>
           <p>Already Have An Account?</p>
-          <button className='reg-btn'>Login</button>
+          <NavLink className="li" to={"/login"} ><button className='reg-btn'>Login</button></NavLink>
+
       </div>
 
       </div>
@@ -74,7 +77,7 @@ async function handlesubmit(e){
     <div className='form-login'>
 
 
-    <h3>SIGN IN</h3>
+    <h3>REGISTER</h3>
     <form action="" onSubmit={handlesubmit} >
         <div className='division'>
     <div className=''>

@@ -1,5 +1,7 @@
 
 import React, { useState } from 'react';
+import { NavLink } from 'react-router-dom'
+
 
 export default function Login() {
 
@@ -35,7 +37,7 @@ export default function Login() {
         <p className='para-login'>Doorstep Wash & Dryclean service</p>
         <div className='btn-sec'>
             <p>Don't Have An Account?</p>
-            <button className='reg-btn'>Register</button>
+            <NavLink className="li" to={"/register"} ><button className='reg-btn'>Register</button></NavLink>
         </div>
 
         </div>
@@ -61,6 +63,7 @@ export default function Login() {
         </div>
 
         <button className='btn-signin'>Sign In</button>
+        
       </form >
       </div>
 
