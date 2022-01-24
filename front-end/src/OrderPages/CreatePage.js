@@ -8,6 +8,7 @@ export default function CreatePage() {
   return <div className='create'>
       <Sidebar/>
       <div className='create-right'>
+          
             <div className='search-bar'>
 
                 <h2>ORDERS | 0</h2>

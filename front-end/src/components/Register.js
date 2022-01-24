@@ -26,9 +26,11 @@ export default function Register() {
             setnewobject({...newobject,[e.target.name]:e.target.value})
             // console.log(newobject)
     }
+
 async function handlesubmit(e){
         e.preventDefault();
     console.log(newobject)
+
    const response=  await fetch("http://localhost:5000/createuser", {
   method: 'POST',
   body: JSON.stringify(newobject),
@@ -43,7 +45,9 @@ async function handlesubmit(e){
 
         if (data.success){
             localStorage.setItem('token',data.authtoken)
+            
             alert("rigisterd successfully")
+
             // history("/dashbord")
             
         }else{
@@ -52,6 +56,7 @@ async function handlesubmit(e){
         }
             
     }
+
   return (
   
   
@@ -83,7 +88,7 @@ async function handlesubmit(e){
     <div className=''>
         <div className='field reg-field'>
           <label htmlFor="name">Name</label>
-          <input type="text" id='name' name="name" onChange={handlechange}/>
+          <input type="text" id='name' name="name" onChange={handlechange} required/>
           <div className='under-line'></div>   
       </div>
 

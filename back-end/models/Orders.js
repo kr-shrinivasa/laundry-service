@@ -44,7 +44,7 @@ const ordersSchema = new Schema({
                     type: String,
                     required: true,
                   },
-                price:{
+                washprice:{
                     type: Number,
                     required: true,
                 }
