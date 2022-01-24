@@ -9,7 +9,7 @@ const ordersSchema = new Schema({
     },
   
     shippingInfo: {
-        address: {
+        userAddress: {
           type: String,
           required: true,
         },

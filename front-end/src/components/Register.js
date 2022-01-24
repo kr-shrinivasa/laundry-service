@@ -79,7 +79,7 @@ async function handlesubmit(e){
 
 
 <div className='right-reg'>
-    <div className='form-login'>
+    <div className='form-login form-reg'>
 
 
     <h3>REGISTER</h3>
