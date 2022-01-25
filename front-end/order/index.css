@@ -1,0 +1,21 @@
+.order1{
+    text-align:center;
+    width: 297px;
+    height: 66px;
+    font: normal normal bold 24px/33px Open Sans;
+    letter-spacing: 0.43px;
+    color: #0A1F44;
+    opacity: 1;
+}
+.order2{
+    text-align: center;
+    width: 263px;
+    height: 45px;
+}
+.order3{
+    text-align :center;
+    width: 235px;
+    height: 44px;
+    border-radius:22px;
+}
+
