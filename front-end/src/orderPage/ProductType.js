@@ -1,9 +1,7 @@
 
-
-
 import React, { useEffect, useState } from 'react';
 
-export default function ProductType({item,index,setnewOrder ,newOrder }) {
+export default function ProductType({item,index,setnewObjs }) {
 
     const washTypes=[
         {   
@@ -43,11 +41,7 @@ export default function ProductType({item,index,setnewOrder ,newOrder }) {
     let [totalprice, settotalprice] = useState(0);
 
     
-    // let [objct, setobject] = useState({
-    //     name:item.name,
-    //     quantity:0,
-    //     washTypes:[],
-    // });
+    
     
 
     function handleclick(obj){
@@ -58,13 +52,15 @@ export default function ProductType({item,index,setnewOrder ,newOrder }) {
                 result =false
             }})
 
-        console.log(result)
+        // console.log(result)
 
         if (result){
             console.log(obj)
             setwashlist([...washlist,obj])
             console.log("added list")
         }
+
+        
        
         }
         
@@ -76,13 +72,9 @@ export default function ProductType({item,index,setnewOrder ,newOrder }) {
                 totalwash = element.price+totalwash})}
                 setprice(totalwash)
 
-              const  newobj ={
-                    name:item.name,
-                    quantity:sigleCount,
-                    washTypes:washlist,
-                }
 
-                setnewOrder([...newOrder,newobj])
+             
+             
 
         }, [washlist]);
 
@@ -92,14 +84,20 @@ export default function ProductType({item,index,setnewOrder ,newOrder }) {
         useEffect(() => {
             
           settotalprice(price*sigleCount)
+          const  newobj ={
+            name:item.name,
+            quantity:sigleCount,
+            washes:washlist,
+        }
+        setnewObjs(newobj)
  
-        }, [price]);
+        }, [price,sigleCount]);
 
 
 
 
     function handlechange(e){
-        console.log(e.target.value)
+        // console.log(e.target.value)
 
         setsingeCount(e.target.value)
     }
@@ -109,6 +107,7 @@ export default function ProductType({item,index,setnewOrder ,newOrder }) {
         e.preventDefault();
         
         setwashlist([])
+        setsingeCount(0)
     }
 
 
@@ -128,7 +127,7 @@ export default function ProductType({item,index,setnewOrder ,newOrder }) {
               </div>
 
               <div className='quantity'>
-                  <input className='quantity-input' type="Number" min="0" onChange={handlechange}/>
+                  <input className='quantity-input' type="Number" min="0" value={sigleCount ? sigleCount:""} onChange={handlechange}/>
               </div>
 
               <div className='Wash-type-section'>
@@ -139,16 +138,25 @@ export default function ProductType({item,index,setnewOrder ,newOrder }) {
               </div>
 
               <div className='price'>
-                   <h3> {sigleCount} x {price} ={totalprice} </h3> 
-                   {console.log(washlist)}
+                  { sigleCount ?
+                   <h3> {sigleCount} x {price} ={totalprice} </h3> :
+                  <h3>--</h3> }
               </div>
 
               <div className='other'>
-                  {                     
-            <li className="li"  ><button className='reg-btn btn-reset' onClick={reset}>Reset</button></li> 
-                  }
+                {sigleCount ?             
+            <li className="li"  ><button className='reg-btn btn-reset' onClick={reset}>Reset</button></li> : ""
+                }
               </div>
 
           </div>
   </div>)
 }
+
+// const val =""
+// if(val){
+//     console.log("loggig");
+// }else{
+//     console.log("false 1111");
+    
+// }
