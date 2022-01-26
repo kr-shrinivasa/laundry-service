@@ -1,0 +1,143 @@
+/* popup style start */
+*{
+    padding: 0%;
+    margin: 0%;
+    box-sizing: border-box;
+}
+body{
+    background-color: #afacac;
+}
+.summary{
+  width: 926px;
+  height: 931px;
+  background-color: #FFFFFF;
+  float: right;
+}
+
+/* navbar----- start */
+
+.navbar{
+    width:100%;
+    height:70px;
+    background-color: #5861AE;
+    color: #FFFFFF;
+}
+.navbar ul{
+    display: flex;
+    justify-content: space-between;
+}
+.navbar li{
+    list-style: none;
+    font-size: 22px;
+    padding: 20px;
+}
+a{
+    text-decoration: none;
+    color: black;
+}
+
+/* navbar end---------- */
+
+
+/* address-info---start */
+
+.address-info{
+    width: 100%;
+    height: 98px;
+    background-color: #F4F9FF;
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    font-size: 16px;
+}
+.address input{
+    display: block;
+    margin: 10px;
+}
+.location input{
+    display: block;
+    margin: 10px;
+}
+.phone input{
+    display: block;
+    margin: 10px;
+}
+
+/* address-info---start */
+
+/* table-------start */
+table {
+    border-collapse: collapse;
+    width: 100%;
+    top: 0px;    
+    font: normal normal normal 18px/24px Open Sans;
+    letter-spacing: 0.43px;
+    color: #1B2734;
+    opacity: 1;
+  }
+  
+th, td {
+    padding: 8px;
+    text-align: center;
+    border-bottom: 1px solid #ddd;
+}
+tfoot{
+    font: normal normal normal 16px/22px Open Sans;
+    letter-spacing: 0.38px;
+    color: #1B2734;
+    opacity: 1;
+}
+.total{
+    background-color: #5861AE;
+}
+.order-details{
+    padding: 5px;
+}
+
+/* table-------end */
+
+/* address detail  */
+.default-add{
+    width: 236px;
+    height: 85px;
+    background-color: #FFFFFF;
+    padding: 2px;
+    border: 2px solid #5861AE;
+    border-radius: 4px;
+    margin: 15px;
+    box-shadow: 5px 5px 5px 5px rgb(211, 210, 210);
+}
+.confirm-add{
+    width: 236px;
+    height: 85px;
+    background-color: #FFFFFF;
+    padding: 2px;
+    border: 2px solid #5861AE;
+    border-radius: 4px;
+    margin: 15px;
+    box-shadow: 5px 5px 5px 5px rgb(211, 210, 210);
+}
+.add-new-address{
+    display: flex;
+}
+.address-title{
+    padding: 12px;
+}
+.add-new{
+padding-top: 55px;
+}
+
+/* btn */
+.btn{
+    
+
+width: 926px;
+height: 70px;
+background: #F4F4F4 0% 0% no-repeat padding-box;
+box-shadow: 0px -3px 6px #00000015;
+opacity: 1;
+top: 875px;
+}
+
+
+/* popup style end */
