@@ -57,6 +57,7 @@
   }
   p{
     text-align: center;
+    font-size: 17px;
   }
   button{
       margin: 25px;
@@ -65,4 +66,6 @@
       width: 235px;
       height: 44px;
       border-radius: 22px;
+      background-color: #5861AE;
+      color: #fff;
   }
