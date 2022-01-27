@@ -29,11 +29,18 @@ const [newobject, setnewobject] = useState({
 async function handlesubmit(e){
         e.preventDefault();
     console.log(newobject)
+    let f=false
     for (let field in newobject){
         if (! newobject[field]){
             alert("plese fill all fields")
+            f=true
+            break
         }
     }
+    if (f){
+        return}
+        
+
 
    const response=  await fetch("http://localhost:5000/createuser", {
   method: 'POST',

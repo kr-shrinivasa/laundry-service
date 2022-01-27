@@ -47,7 +47,7 @@ const createUser =async(req,res)=>{
 
     }else{
         res.status(400).json({error:"sorry this user alredy rigistered"})}
-
+        
     }catch(err){
         console.log(err)
         res.status(500).json({error:"internal server error"})

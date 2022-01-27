@@ -24,7 +24,7 @@ export default function Sidebar() {
   return <div className='sidebar'>
       <ul className='side-list'>
 
-        <div className={`normal ${location.pathname==="/create"? "whitee":""}  `} >
+      <div className={`normal ${location.pathname==="/create"? "whitee":""}  `} >
       <NavLink to={"/option"} className={"side-item1"}  ><img className="side-item" src={location.pathname==="/create"? homeblue :home} alt="" /> </NavLink>
 
       </div>

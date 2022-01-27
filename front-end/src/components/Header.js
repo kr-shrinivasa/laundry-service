@@ -7,6 +7,9 @@ export default function Header() {
   useEffect(() => {
     console.log(location)
    }, [location])
+   
+  let user=localStorage.getItem('token')
+
 
   return <div className='navbar'>
       <nav className='navs'>
@@ -16,8 +19,8 @@ export default function Header() {
           <NavLink className={`li ${location.pathname==="/"? "active":""}`} to={"/"} >Home</NavLink>
           <NavLink className={`li ${location.pathname==="/"? "active":""}`} to={"/"} >Pricing</NavLink>
         <NavLink  className={`li ${location.pathname==="/"? "active":""}`} to={"/"}  >Career</NavLink>
-
-        <NavLink  className='btn li' to={"/login"}>Sign In</NavLink>
+       { user ? <li> user icon</li> :
+        <NavLink  className='btn li' to={"/login"}>Sign In</NavLink>}
           </ul>
       </nav>
   </div>;
