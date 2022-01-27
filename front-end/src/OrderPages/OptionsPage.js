@@ -1,4 +1,12 @@
 
+import Shirts from "../img/shirts.jpg"
+import TShirts from "../img/t-shirt.jpg"
+import Trousers from "../img/trousers.jpg"
+import Jeans from "../img/jeans.jpg"
+import Boxers from "../img/boxers.jpg"
+import Joggers from "../img/joggers.jpg"
+import others from "../img/others.jpg"
+
 
 
 import React, {useState,useEffect} from 'react';
@@ -11,33 +19,33 @@ export default function OptionsPage() {
     const producttype=[
         {
             name:"Shirts",
-            img:"../img/shirts.jpg",
+            img:Shirts,
             description:"Lorem, ipsum dolor sit amet"
         },
         {
             name:"T-Shirts",
-            img:"../img/t-shirt.jpg",
+            img:TShirts,
             description:"Lorem, ipsum dolor sit amet"
         },
         {
             name:"Trousers",
-            img:"../img/trousers.jpg",
+            img:Trousers,
             description:"Lorem, ipsum dolor sit amet"
         },{
             name:"Jeans",
-            img:"../img/jeans.jpg",
+            img:Jeans,
             description:"Lorem, ipsum dolor sit amet"
         },{
             name:"Boxers",
-            img:"",
+            img:Boxers,
             description:"Lorem, ipsum dolor sit amet"
         },{
             name:"Joggers",
-            img:"../img/boxers.jpg",
+            img:Joggers,
             description:"Lorem, ipsum dolor sit amet"
         },{
             name:"others",
-            img:"../img/others.png",
+            img:others,
             description:"Lorem, ipsum dolor sit amet"
         },
     ]
@@ -47,21 +55,16 @@ export default function OptionsPage() {
     const [newOrder, setnewOrder] = useState([]);
     let [objs, setnewobjs] = useState({});
 
-
     let [finaldata, setfinaldata] = useState([]);
+    // const [isdiseble, setdiseble] = useState(true);
 
     const [isOpen, setIsOpen] = useState(false);
-    const togglePopup = () => {
-            setIsOpen(!isOpen);
-          }
-
     
-
+    
 
     useEffect(() => {
 
-        let item=newOrder.filter((ele)=>ele.name !== objs.name)
-
+        let item=newOrder.filter((ele)=>ele.name !== objs.name && ele.quantity >0 && ele.washes.length>0)
         setnewOrder([...item,objs])
      
     }, [objs]);
@@ -71,25 +74,53 @@ export default function OptionsPage() {
     function confirmOrder(e){
     e.preventDefault();
 
-    let final =  newOrder.filter((list)=>(list.quantity >0 && list.washes.length>0))
-     
-    if(final.length===0){
-      console.log("please select something") 
-     }else{
-    setfinaldata(final)
-    console.log(final) 
-     }
+    if ( finaldata.length===0 || newOrder.length===0 ){
+        alert("please select something")  
     }
+   
+    }
+    
+    const togglePopup = (e) => {
+       
+        e.preventDefault();
 
+        let final =  newOrder.filter((list)=>(list.quantity >0 && list.washes.length>0))
+         
+        if(final.length===0){
+          console.log("please select something")
+          alert("please select something")  
+         }else{
+        setfinaldata(final)
+        console.log(final) 
+        setIsOpen(!isOpen)
+         }
+      }
+
+const [iscancel, setiscancel] = useState(false);
+function cancel(){
+    setiscancel(!iscancel)
+    setfinaldata([])
+}
 
 
   return <div className='create'>
       <Sidebar/>
 
       <div className='create-right'>
+
+      <div className='search-bar'>
+    <h2>Create Order</h2>
+    <form action="" >
+        <div className='field field-search'>
+            <label htmlFor="search"></label>
+            <input type="text" id='Email/phone' name="emailPhone"/>            
+            </div>
+        <div className='under-line search-line'></div>
+    </form >
+    </div>
       
       <form action="" className='product-list' onSubmit={confirmOrder}>
-
+    
           <div className='table'>
               <h3 className='product-type'>Product Type</h3>
               <h3 className='quantity'>quantity</h3>
@@ -99,13 +130,11 @@ export default function OptionsPage() {
           </div>
         {producttype.map((item,index)=>{
                 return(
-                    <ProductType item={item} key={index} index={index} setnewObjs={setnewobjs}   />
+                    <ProductType item={item} key={index} index={index} setnewObjs={setnewobjs}  iscancel={iscancel}  />
                 )
         })}
-
-
         <div className='confirm'>
-            <li className="li"  ><button className='reg-btn'>Cancel</button></li>
+            <li className="li"  ><p className='reg-btn' onClick={cancel}>Cancel</p></li>
             <li className="li"  ><button className='reg-btn btn-confirm'onClick={togglePopup} >Procced</button></li>
 
         </div>
@@ -121,32 +150,3 @@ export default function OptionsPage() {
 }
 
 
-// import React, { useState } from 'react';
-// import Popup from './Popup';
-
-// function App() {
-//   const [isOpen, setIsOpen] = useState(false);
-
-//   const togglePopup = () => {
-//     setIsOpen(!isOpen);
-//   }
-
-//   return <div>
-//     <input
-//       type="button"
-//       value="Click to Open Popup"
-//       onClick={togglePopup}
-//     />
-//     <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
-//     {isOpen && <Popup
-//       content={<>
-//         <b>Design your Popup</b>
-//         <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
-//         <button>Test button</button>
-//       </>}
-//       handleClose={togglePopup}
-//     />}
-//   </div>
-// }
-
-// export default App;

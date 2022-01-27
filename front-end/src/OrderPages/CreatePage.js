@@ -3,6 +3,8 @@
 
 import React from 'react';
 import Sidebar from '../ordersComponent/Sidebar';
+import { NavLink } from 'react-router-dom'
+
 
 export default function CreatePage() {
   return <div className='create'>
@@ -11,7 +13,7 @@ export default function CreatePage() {
           
             <div className='search-bar'>
 
-                <h2>ORDERS | 0</h2>
+                <h2>Orders | 0</h2>
                 <form action="" >
                     <div className='field field-search'>
                         <label htmlFor="search"></label>
@@ -23,7 +25,7 @@ export default function CreatePage() {
 
             <div className='create-sec'>
             <p>No Order Available</p>
-            <li className="li"  ><button className='reg-btn'>Create</button></li>
+            <NavLink className="li" to={"/option"} ><button className='reg-btn'>Create</button></NavLink>
         </div>
 
       </div>

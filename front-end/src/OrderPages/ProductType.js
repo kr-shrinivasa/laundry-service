@@ -1,9 +1,10 @@
 
 
+import "../img/shirts.jpg"
 
 import React, { useEffect, useState } from 'react';
 
-export default function ProductType({item,index,setnewObjs }) {
+export default function ProductType({item,index,setnewObjs ,iscancel}) {
 
     const washTypes=[
         {   
@@ -34,6 +35,9 @@ export default function ProductType({item,index,setnewObjs }) {
         },
     ]
 
+        
+
+
     let [sigleCount, setsingeCount] = useState(0);
     let [washlist, setwashlist] = useState([]);
     
@@ -61,9 +65,6 @@ export default function ProductType({item,index,setnewObjs }) {
             setwashlist([...washlist,obj])
             console.log("added list")
         }
-
-        
-       
         }
         
         useEffect(() => {
@@ -73,41 +74,40 @@ export default function ProductType({item,index,setnewObjs }) {
                 washlist.forEach((element)=>{
                 totalwash = element.price+totalwash})}
                 setprice(totalwash)
-
-
-             
-             
-
         }, [washlist]);
-
-
-
 
         useEffect(() => {
             
-          settotalprice(price*sigleCount)
+        settotalprice(price*sigleCount)
+         let totalval=price*sigleCount
           const  newobj ={
             name:item.name,
+            subprice:totalval,
             quantity:sigleCount,
+            washprice:price,
             washes:washlist,
         }
         setnewObjs(newobj)
  
         }, [price,sigleCount]);
 
+        useEffect(() => {
+        setwashlist([])
+        setsingeCount(0) 
 
+        }, [iscancel]);
+        
 
 
     function handlechange(e){
         // console.log(e.target.value)
 
         setsingeCount(e.target.value)
-    }
 
+    }
 
     function reset(e){
         e.preventDefault();
-        
         setwashlist([])
         setsingeCount(0)
     }
@@ -120,8 +120,9 @@ export default function ProductType({item,index,setnewObjs }) {
   <div>
        <div className=' data'>
               <div className='product-type'>
+                  <div className='product-type-img'>
               <img  className='product-img' src={item.img} alt="product" />
-
+              </div>
                 <div>
                 <h3>{item.name}</h3>
                 <p>{item.description}</p>
@@ -155,10 +156,3 @@ export default function ProductType({item,index,setnewObjs }) {
   </div>)
 }
 
-// const val =""
-// if(val){
-//     console.log("loggig");
-// }else{
-//     console.log("false 1111");
-    
-// }

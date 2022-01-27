@@ -46,7 +46,7 @@ const createUser =async(req,res)=>{
         res.send({success,authtoken})
 
     }else{
-        res.status(400).send("sorry this user alredy rigistered")}
+        res.status(400).json({error:"sorry this user alredy rigistered"})}
 
     }catch(err){
         console.log(err)

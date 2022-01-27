@@ -7,6 +7,7 @@ import LoginPage from './Page/LoginPage';
 import Homepage from './Page/Homepage';
 import CreatePage from './OrderPages/CreatePage';
 import OptionsPage from './OrderPages/OptionsPage';
+import OrderList from './OrderPages/OrderList';
 
 
 function App() {
@@ -15,8 +16,8 @@ function App() {
     <Header/>
 
     <Routes>
+      <Route path="/orderlist" element={<OrderList />} />
         <Route path="/option" element={<OptionsPage />} />
-
         <Route path="/create" element={<CreatePage />} />
         <Route path="/register" element={<RegisterPage />} />
         <Route  path="/login" element={<LoginPage />} />

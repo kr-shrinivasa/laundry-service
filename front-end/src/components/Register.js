@@ -1,13 +1,12 @@
 import React from 'react';
 import  { useState } from 'react';
-import { NavLink } from 'react-router-dom'
+import { NavLink, useNavigate } from 'react-router-dom'
 
 
 export default function Register() {
 
-
-
-    const [newobject, setnewobject] = useState({
+    let history = useNavigate();
+const [newobject, setnewobject] = useState({
         name:"",
         email:"",
         phone:"",
@@ -30,6 +29,11 @@ export default function Register() {
 async function handlesubmit(e){
         e.preventDefault();
     console.log(newobject)
+    for (let field in newobject){
+        if (! newobject[field]){
+            alert("plese fill all fields")
+        }
+    }
 
    const response=  await fetch("http://localhost:5000/createuser", {
   method: 'POST',
@@ -45,14 +49,15 @@ async function handlesubmit(e){
 
         if (data.success){
             localStorage.setItem('token',data.authtoken)
+            localStorage.setItem('user',JSON.stringify(newobject))
             
-            alert("rigisterd successfully")
+            // alert("rigisterd successfully")
 
-            // history("/dashbord")
+            history("/create")
             
         }else{
             console.log(data)
-            // alert(data)
+            alert(data.error)
         }
             
     }
