@@ -7,8 +7,8 @@ export default function Login() {
     let history = useNavigate();
 
     const [newobject, setnewobject] = useState({email:"",password:""})
+    const [iseye, setiseye] = useState(false);
 
-    // console.log(newobject)
 
     function handlechange(e){
         // console.log(e.target.value);
@@ -91,7 +91,8 @@ const response=  await fetch("http://localhost:5000/login", {
         </div>
         <div className='field'>
             <label htmlFor="password">Password</label>
-            <input type="password" id='password'onChange={handlechange} name="password"/>
+            <input type={!iseye?  "password":""} id='password'onChange={handlechange} name="password"/>
+            <i className='fa fa-eye'  onClick={()=>{setiseye(!iseye)}}> </i>
             <div className='under-line'></div>
             <div className='forgot'>
                 <p>Forgot Password?</p>

@@ -6,9 +6,16 @@ import AllorderTable from './AllorderTable';
 
 export default function OrderList() {
     let history = useNavigate();
-    let user=localStorage.getItem('token')
-    if(!user){
-    history("/")}
+
+    useEffect(() => {
+        let user=localStorage.getItem('token')
+        if(!user){
+        history("/")}
+    
+      
+    }, );
+
+
     const [allorders, setallorders] = useState([]);
 
    
@@ -41,7 +48,7 @@ export default function OrderList() {
         <div className='search-bar'>
 
         <div className='search-bar'>
-    <h2> Orders |0</h2>
+    <h2> Orders |{allorders.length}</h2>
     <form action="" className='order-list'>
 
       <NavLink to={"/option"}><button className=''>Create</button></NavLink>

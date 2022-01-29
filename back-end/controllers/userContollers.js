@@ -60,22 +60,24 @@ const createUser =async(req,res)=>{
 
 const checkLogin = async(req,res)=>{
 
-     //checking validataion
-     
+     //checking validat
+    
     const {email, password }=req.body
     try{
     const user =await User.findOne({email})
 
     let success=false
+    console.log(user)
 //check email present or not
     if (!user){
-        res.status(400).json({success,error:"try to login with correct credintials"})
+        return  res.json({success,error:"try to login with correct credintials"})
     }
     
+    //checking password
     const password_compare_res= await bcrypt.compare(password,user.password)
-//checking password
+
     if (!password_compare_res){
-        res.status(400).json({success,error:"wrong password"})
+        return  res.json({success,error:"wrong password"})
     }
 
     const data = {

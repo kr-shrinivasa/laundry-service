@@ -18,9 +18,14 @@ import { useNavigate } from "react-router-dom"
 
 export default function OptionsPage() {
     let history = useNavigate();
-    let user=localStorage.getItem('token')
-    if(!user){
-    history("/")}
+
+    useEffect(() => {
+        let user=localStorage.getItem('token')
+        if(!user){
+        history("/")}
+    
+      
+    }, );
 
     const producttype=[
         {

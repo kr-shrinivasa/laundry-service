@@ -669,3 +669,10 @@ color: #4552C1;
     display: flex;
     flex-direction: column-reverse;
 }
+.field i{
+    margin-left: 150px;
+}
+
+.field input{
+    font-size: 16px;
+}

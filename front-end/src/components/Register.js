@@ -30,6 +30,7 @@ async function handlesubmit(e){
         e.preventDefault();
     console.log(newobject)
     let f=false
+
     for (let field in newobject){
         if (! newobject[field]){
             alert("plese fill all fields")
@@ -39,9 +40,14 @@ async function handlesubmit(e){
     }
     if (f){
         return}
+
+    
+    let phone1 =Number(newobject.phone)
+        console.log(phone1*1)
+
+
+    if ((phone1*1) >0 && (Number(newobject.pincode)*1) >0 ){
         
-
-
    const response=  await fetch("http://localhost:5000/createuser", {
   method: 'POST',
   body: JSON.stringify(newobject),
@@ -58,7 +64,6 @@ async function handlesubmit(e){
             localStorage.setItem('token',data.authtoken)
             localStorage.setItem('user',JSON.stringify(newobject))
             
-            // alert("rigisterd successfully")
 
             history("/create")
             
@@ -66,7 +71,11 @@ async function handlesubmit(e){
             console.log(data)
             alert(data.error)
         }
-            
+    }else{
+        alert("phone or pincode should be number")
+    }
+        
+
     }
 
   return (
@@ -118,7 +127,7 @@ async function handlesubmit(e){
 
       <div className='field reg-field'>
           <label htmlFor="password">Password</label>
-          <input type="password" id='password' name="password" onChange={handlechange}/>
+          <input id='password' name="password" onChange={handlechange}/>
           <div className='under-line'></div>   
       </div>
       </div>
