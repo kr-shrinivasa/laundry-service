@@ -8,49 +8,62 @@ const ordersSchema = new Schema({
         ref: 'user'
     },
   
-    shippingInfo: {
+  shippingInfo: {
         userAddress: {
           type: String,
-          required: true,
         },
         storeAddress: {
           type: String,
-          required: true,
         },
-        phoneNo: {
+        storephone: {
           type: Number,
-          required: true,
         },
+      },
+      totalPrice:{
+        type:Number
+      },
+      totalItems:{
+        type:Number
       },
 
       orderItems:[
         {
           name: {
             type: String,
-            required: true,
           },
-          price: {
+          subprice: {
             type: Number,
-            required: true,
           },
           quantity: {
             type: Number,
-            required: true,
+          },
+          price: {
+            type: Number,
+          },
+          washprice: {
+            type: Number,
           },  
         
-        washtypes:[
+        washes:[
             {
                 name: {
                     type: String,
-                    required: true,
                   },
-                washprice:{
+                price:{
                     type: Number,
-                    required: true,
-                }
+                },imgNormal: {
+                  type: String,
+                },imgBlue: {
+                  type: String,
+                },
+                id:{
+                  type: Number,
+              },
+                
             }
         ]
     }
+
       ],
       createdAt: {
         type: Date,
@@ -58,7 +71,8 @@ const ordersSchema = new Schema({
       
     });
     
-    module.exports = mongoose.model("Order", ordersSchema);
+  const  Orders = mongoose.model("Order", ordersSchema);
+  module.exports = Orders;
 
 
 

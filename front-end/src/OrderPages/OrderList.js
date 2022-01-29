@@ -1,24 +1,38 @@
 
-import React from 'react';
+import React,{useEffect, useState} from 'react';
 import Sidebar from '../ordersComponent/Sidebar';
-import { NavLink } from 'react-router-dom'
-
+import { NavLink, useNavigate } from 'react-router-dom'
+import AllorderTable from './AllorderTable';
 
 export default function OrderList() {
-    let list=[
-        {
-          id:"or00010",
-          date:"Mon ,1/1/1111 ,1:11 AM",
-          location:"jp nagar" ,
-          city:"Bengalore",
-          phone:"9123456789",
-          items:"5",
-          price:"150",
-          status:"ready to deliver",
-          
+    let history = useNavigate();
+    let user=localStorage.getItem('token')
+    if(!user){
+    history("/")}
+    const [allorders, setallorders] = useState([]);
 
-        }
-    ]
+   
+    useEffect(() => {
+        
+    fetch("http://localhost:5000/order/orderlist", {
+  method: 'GET',
+  
+  headers: {
+    'Content-type': 'application/json; charset=UTF-8',
+    "auth-token":localStorage.getItem('token')
+  },
+}).then((response)=>
+   response.json() 
+).then((data)=>{
+    console.log(data)
+    setallorders(data)
+}).catch((err)=>{
+    console.log(err)
+    
+})
+
+    }, []);
+    
 
   return<div className='create'>
   <Sidebar/>
@@ -53,24 +67,14 @@ export default function OrderList() {
               <p className='status '>status</p>
               <p className='view '>view</p>
           </div>
-        
+          <div className='arrenge-table'>
         {
-            list.map((ele,ind)=>{
+            allorders.map((ele,ind)=>{
                 return(
-            <div className='table-list-data'>
-            <p className='Order-Id '>{ele.id}</p>
-              <p className='date-time '>{ele.date}</p>
-              <p className='store-location '>{ele.location}</p>
-              <p className='city'>City</p>
-              <p className='store-phone '>{ele.phone}</p>
-              <p className='total-items '>{ele.items}</p>
-              <p className='Total-Price '>{ele.price}</p>
-              <p className='status '>{ele.status}</p>
-              <p className='view '><i className='fa fa-eye'></i></p>
-                    </div>
+                    <AllorderTable ele={ele} key={allorders._id}  />
                 )
             })
-        }
+        }</div>
 
 
   </div>

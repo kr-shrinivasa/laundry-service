@@ -637,10 +637,12 @@ width: 15%;
     padding: 0px 10px;
     border-bottom: 1.5px solid rgb(150, 147, 147);
 }
+
 .table-list-data p{
     width: 15%;
     text-align: center;
 }
+
 .date-time{
     width: 22%;
 }
@@ -651,6 +653,7 @@ width: 15%;
     justify-content: space-between;
     width: 30%;
 }
+
 .order-list button{
     text-align: center;
     font: normal normal bold 15px/20px ;
@@ -660,5 +663,9 @@ width: 15%;
 border-radius: 4px;
 background: white;
 color: #4552C1;
+}
 
+.arrenge-table{
+    display: flex;
+    flex-direction: column-reverse;
 }

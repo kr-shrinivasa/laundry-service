@@ -13,7 +13,7 @@ export default function Home() {
   <p className='para-login'>Doorstep Wash & Dryclean service</p>
   <div className='btn-sec'>
       <p>Please Sign In </p>
-      <NavLink className="li" to={"/login"} ><button className='reg-btn'>Sign In</button></NavLink>
+      <NavLink className="li" to={"/"} ><button className='reg-btn'>Sign In</button></NavLink>
   </div>
 
   </div>

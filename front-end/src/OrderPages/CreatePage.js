@@ -3,10 +3,14 @@
 
 import React from 'react';
 import Sidebar from '../ordersComponent/Sidebar';
-import { NavLink } from 'react-router-dom'
+import { NavLink ,useNavigate} from 'react-router-dom'
 
 
 export default function CreatePage() {
+    let history = useNavigate();
+    let user=localStorage.getItem('token')
+    if(!user){
+    history("/")}
   return <div className='create'>
       <Sidebar/>
       <div className='create-right'>

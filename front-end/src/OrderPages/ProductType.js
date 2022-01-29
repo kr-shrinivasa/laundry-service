@@ -3,9 +3,13 @@
 import "../img/shirts.jpg"
 
 import React, { useEffect, useState } from 'react';
+import { useNavigate } from "react-router-dom";
 
 export default function ProductType({item,index,setnewObjs ,iscancel}) {
-
+    let history = useNavigate();
+    let user=localStorage.getItem('token')
+    if(!user){
+    history("/")}
     const washTypes=[
         {   
             name:"Washing",

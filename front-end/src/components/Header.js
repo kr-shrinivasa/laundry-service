@@ -6,11 +6,14 @@ export default function Header() {
   const location =useLocation()
   useEffect(() => {
     console.log(location)
+    
    }, [location])
-   
+  
   let user=localStorage.getItem('token')
 
-
+function logout(){
+  localStorage.setItem('token',"")
+}
   return <div className='navbar'>
       <nav className='navs'>
           <h1 className='logo'>LAUNDRY</h1>
@@ -19,8 +22,9 @@ export default function Header() {
           <NavLink className={`li ${location.pathname==="/"? "active":""}`} to={"/"} >Home</NavLink>
           <NavLink className={`li ${location.pathname==="/"? "active":""}`} to={"/"} >Pricing</NavLink>
         <NavLink  className={`li ${location.pathname==="/"? "active":""}`} to={"/"}  >Career</NavLink>
-       { user ? <li> user icon</li> :
-        <NavLink  className='btn li' to={"/login"}>Sign In</NavLink>}
+        {!user?
+        <NavLink  className='btn li' to={"/"}>Sign In</NavLink>:
+        <NavLink  className='btn li' to={"/"} onClick={logout}>Logout</NavLink>}
           </ul>
       </nav>
   </div>;

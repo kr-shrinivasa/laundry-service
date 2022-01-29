@@ -34,7 +34,7 @@ async function handlesubmit(e){
         
 
 
-   const response=  await fetch("http://localhost:5000/login", {
+const response=  await fetch("http://localhost:5000/login", {
   method: 'POST',
   body: JSON.stringify(newobject),
   headers: {
@@ -98,8 +98,7 @@ async function handlesubmit(e){
             </div>
         </div>
 
-        <button className='btn-signin'>Sign In</button>
-        
+        <button className='btn-signin'>Sign In</button>    
       </form >
       </div>
 

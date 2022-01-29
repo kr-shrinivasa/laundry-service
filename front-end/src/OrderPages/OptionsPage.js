@@ -13,8 +13,14 @@ import React, {useState,useEffect} from 'react';
 import PopUp from '../ordersComponent/PopUp';
 import Sidebar from '../ordersComponent/Sidebar';
 import ProductType from './ProductType';
+import { useNavigate } from "react-router-dom"
+
 
 export default function OptionsPage() {
+    let history = useNavigate();
+    let user=localStorage.getItem('token')
+    if(!user){
+    history("/")}
 
     const producttype=[
         {

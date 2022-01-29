@@ -35,7 +35,7 @@ const createUser =async(req,res)=>{
         const newuser =await User.create(newUseInfo)
 
         const data ={
-            newuser:{
+            user:{
                 id:newuser.id
             }
         }
@@ -60,8 +60,10 @@ const createUser =async(req,res)=>{
 
 const checkLogin = async(req,res)=>{
 
-     //checking validation
+     //checking validataion
+     
     const {email, password }=req.body
+    try{
     const user =await User.findOne({email})
 
     let success=false
@@ -87,6 +89,10 @@ const checkLogin = async(req,res)=>{
     success=true
 
     res.json({success,authtoken})
+    }catch(err){
+        console.log(err)
+        res.status(500).json({error:"internal server error while login"})
+    }
 
 }
 
