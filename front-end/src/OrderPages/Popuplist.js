@@ -1,36 +1,16 @@
 
 
-import "./modal.css"
+
+import "../ordersComponent/modal.css"
 
 import React,{useState,useEffect} from  "react";
-import SummaryTable from "./SummaryTable";
-import OrderSucsess from "./OrderSucsess";
-const Popup = ({finaldata,handleClose}) => {
-  const [isSucsess, setisSucsess] = useState(false);
+import SummaryTable from "../ordersComponent/SummaryTable";
+const Popuplist = ({finaldata,handleClose}) => {
   
   const [subTotal, setsubTotal] = useState(0)
   const [finalOrdervalue, setfinalOrderValue] = useState(0)
   const [totalItems, settotalTtems] = useState(0)
 
-  const [isadress, setisadress] = useState(false);
-  const [newAddress, setnewAddress] = useState({address:"#100,3rd Main, 4thcross,RajajiNagar, Bengaluru,560010"})
-  
-  function addNew(){
-    setisadress(true)
-  }
-  function handlechange(e){
-    setnewAddress({[e.target.name]:e.target.value})
-  }
-  function handlesubmit(e){
-    e.preventDefault();
-    console.log(newAddress) 
-    setisadress(false) 
-  }
-
-
-  
-
-  // const [Total, setTotal] = useState(0)
   useEffect(() => {
     let totalval=0
     let itemsconut=0
@@ -47,24 +27,7 @@ const Popup = ({finaldata,handleClose}) => {
   }, []);
 
 
-let orderItems=finaldata
-let totalPrice=finalOrdervalue
-async function sucsessPop(){
-console.log(finaldata,"final")
-    const response=  await fetch("http://localhost:5000/order/createorder", {
-  method: 'POST',
-  body: JSON.stringify({orderItems,totalPrice,totalItems}),
-  headers: {
-    'Content-type': 'application/json; charset=UTF-8',
-    "auth-token":localStorage.getItem('token')
-  },
-})
 
-  const data= await response.json()
-  console.log(data)
-  if (data.sucsess){
-  setisSucsess(!isSucsess)}
-}
 
   return (
 
@@ -144,28 +107,17 @@ return (<>
        </p>
       </div>
 
-    <div className="default-add">
-      <h4>Other</h4>
-      <p>{newAddress.address} </p> 
-      </div>
-      {isadress ? <form action="" onSubmit={handlesubmit}>
-        <div className='field reg-field'>
-          <label htmlFor="address">Address</label>
-          <input type="text" id='address' name="address" onChange={handlechange}/>
-          <div className='under-line'></div>
-          </div>
-          <button className="add" type="submit">Add</button>
-          </form>:  
-      <h4 className="add-new" onClick={addNew}>+ ADD NEW</h4>}
+    
+      
     </section>
 <footer className="foot">
-<button className="con-firm" type="submit" onClick={sucsessPop}>Confirm</button>
-{isSucsess ?  
-<OrderSucsess/>:""}
+<button className="con-firm" type="submit" onClick={handleClose}>Close</button>
+
  </footer>  
     </div>
     </div>
   );
 };
  
-export default Popup;
+export default Popuplist;
+

@@ -1,13 +1,12 @@
 import React from 'react';
 import  { useState } from 'react';
-import { NavLink } from 'react-router-dom'
+import { NavLink, useNavigate } from 'react-router-dom'
 
 
 export default function Register() {
 
-
-
-    const [newobject, setnewobject] = useState({
+    let history = useNavigate();
+const [newobject, setnewobject] = useState({
         name:"",
         email:"",
         phone:"",
@@ -30,7 +29,25 @@ export default function Register() {
 async function handlesubmit(e){
         e.preventDefault();
     console.log(newobject)
+    let f=false
 
+    for (let field in newobject){
+        if (! newobject[field]){
+            alert("plese fill all fields")
+            f=true
+            break
+        }
+    }
+    if (f){
+        return}
+
+    
+    let phone1 =Number(newobject.phone)
+        console.log(phone1*1)
+
+
+    if ((phone1*1) >0 && (Number(newobject.pincode)*1) >0 ){
+        
    const response=  await fetch("http://localhost:5000/createuser", {
   method: 'POST',
   body: JSON.stringify(newobject),
@@ -45,16 +62,20 @@ async function handlesubmit(e){
 
         if (data.success){
             localStorage.setItem('token',data.authtoken)
+            localStorage.setItem('user',JSON.stringify(newobject))
             
-            alert("rigisterd successfully")
 
-            // history("/dashbord")
+            history("/create")
             
         }else{
             console.log(data)
-            // alert(data)
+            alert(data.error)
         }
-            
+    }else{
+        alert("phone or pincode should be number")
+    }
+        
+
     }
 
   return (
@@ -79,7 +100,7 @@ async function handlesubmit(e){
 
 
 <div className='right-reg'>
-    <div className='form-login'>
+    <div className='form-login form-reg'>
 
 
     <h3>REGISTER</h3>
@@ -106,7 +127,7 @@ async function handlesubmit(e){
 
       <div className='field reg-field'>
           <label htmlFor="password">Password</label>
-          <input type="password" id='password' name="password" onChange={handlechange}/>
+          <input id='password' name="password" onChange={handlechange}/>
           <div className='under-line'></div>   
       </div>
       </div>
