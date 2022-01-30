@@ -91,7 +91,7 @@ async function handlesubmit(e){
       <p className='para-login'>Doorstep Wash & Dryclean service</p>
       <div className='btn-sec'>
           <p>Already Have An Account?</p>
-          <NavLink className="li" to={"/login"} ><button className='reg-btn'>Login</button></NavLink>
+          <NavLink className="li" to={"/"} ><button className='reg-btn'>Login</button></NavLink>
 
       </div>
 

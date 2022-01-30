@@ -24,7 +24,7 @@ const Popuplist = ({finaldata,handleClose}) => {
   let finalOrder=totalval+deliveryCharge
   setfinalOrderValue(finalOrder)
 
-  }, []);
+  }, [finaldata]);
 
 
 

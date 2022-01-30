@@ -151,7 +151,7 @@ export default function ProductType({item,index,setnewObjs ,iscancel}) {
               </div>
 
               <div className='other'>
-                {sigleCount ?             
+                {sigleCount || price ?             
             <li className="li"  ><button className='reg-btn btn-reset' onClick={reset}>Reset</button></li> : ""
                 }
               </div>

@@ -108,6 +108,7 @@ export default function OptionsPage() {
       }
 
 const [iscancel, setiscancel] = useState(false);
+
 function cancel(){
     setiscancel(!iscancel)
     setfinaldata([])
