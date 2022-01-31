@@ -127,7 +127,7 @@ async function handlesubmit(e){
 
       <div className='field reg-field'>
           <label htmlFor="password">Password</label>
-          <input id='password' name="password" onChange={handlechange}/>
+          <input id='password'type={'password'} name="password" onChange={handlechange}/>
           <div className='under-line'></div>   
       </div>
       </div>
